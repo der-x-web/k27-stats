@@ -121,7 +121,7 @@ textarea.big{min-height:150px;font-size:11px}
   text-transform:uppercase;color:#A6A19B;white-space:nowrap;overflow:hidden}
 
 .scwrap{position:absolute;left:56px;right:56px;top:150px;display:flex;align-items:center;gap:20px}
-.scwrap .crest{width:104px;height:64px;flex:0 0 104px;background-repeat:no-repeat;background-position:center}
+.scwrap .crest{width:124px;height:84px;flex:0 0 124px;background-repeat:no-repeat;background-position:center}
 .scwrap b{font:600 32px var(--cond);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
   overflow:hidden;text-overflow:ellipsis;max-width:280px}
 /* счёт одной строкой: дефис того же кегля и веса, без просветов */
@@ -131,7 +131,7 @@ textarea.big{min-height:150px;font-size:11px}
 .lst.one{top:360px;height:322px}
 .lst.two{top:692px;height:322px}
 .lhd{display:flex;align-items:center;height:42px;border-bottom:2px solid #4A4744}
-.lhd .crest{width:48px;height:30px;flex:0 0 48px;margin-right:16px;background-repeat:no-repeat;
+.lhd .crest{width:58px;height:40px;flex:0 0 58px;margin-right:14px;background-repeat:no-repeat;
   background-position:center}
 .lhd b{flex:1;min-width:0;font:600 19px var(--cond);letter-spacing:.18em;text-transform:uppercase;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -141,9 +141,9 @@ textarea.big{min-height:150px;font-size:11px}
 .lrw{display:flex;align-items:center;height:56px;border-bottom:1px solid rgba(233,231,228,.12);
   font:500 24px var(--cond);color:#D2CEC8}
 .lrw:last-child{border-bottom:0}
-.lrw .nick{flex:1;min-width:0;position:relative;padding-left:64px;letter-spacing:.03em;
+.lrw .nick{flex:1;min-width:0;position:relative;padding-left:72px;letter-spacing:.03em;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lrw .nick:before{content:'';position:absolute;left:20px;top:50%;width:0;height:0;
+.lrw .nick:before{content:'';position:absolute;left:25px;top:50%;width:0;height:0;
   border-left:8px solid var(--acc);border-top:5px solid transparent;border-bottom:5px solid transparent;
   transform:translateY(-50%);opacity:0}
 .lrw i{font-weight:600}
@@ -312,21 +312,21 @@ textarea.big{min-height:150px;font-size:11px}
         </div>
 
         <div class="scwrap">
-          <div class="crest jCrestA"></div>
+          <div class="crest jCrestA" data-ink="2500"></div>
           <b class="jNameA"></b>
           <div class="sc jScore"></div>
           <b class="jNameB"></b>
-          <div class="crest jCrestB"></div>
+          <div class="crest jCrestB" data-ink="2500"></div>
         </div>
 
         <div class="lst one">
-          <div class="lhd"><div class="crest jMiniA"></div><b class="jNameA"></b>
+          <div class="lhd"><div class="crest jMiniA" data-ink="560"></div><b class="jNameA"></b>
             <i>K</i><i>A</i><i>D</i><i class="adr">ADR</i></div>
           <div class="jRowsA"></div>
         </div>
 
         <div class="lst two">
-          <div class="lhd"><div class="crest jMiniB"></div><b class="jNameB"></b>
+          <div class="lhd"><div class="crest jMiniB" data-ink="560"></div><b class="jNameB"></b>
             <i>K</i><i>A</i><i>D</i><i class="adr">ADR</i></div>
           <div class="jRowsB"></div>
         </div>
@@ -502,7 +502,8 @@ function tintLogo(src,els,rgb){
     if(!cov||!src){ e.style.backgroundImage=u; e.style.backgroundSize='contain'; return; }
     const bw=e.clientWidth||parseFloat(getComputedStyle(e).width)||40;
     const bh=e.clientHeight||parseFloat(getComputedStyle(e).height)||40;
-    let h=Math.sqrt((0.42*bw*bh)/(Math.max(cov,0.06)*ar)), w=h*ar;
+    const target=+e.dataset.ink||0.42*bw*bh;
+    let h=Math.sqrt(target/(Math.max(cov,0.06)*ar)), w=h*ar;
     const k=Math.min(1,bw/w,bh/h);
     w=Math.max(1,Math.round(w*k)); h=Math.max(1,Math.round(h*k));
     const c=document.createElement('canvas'); c.width=w; c.height=h;
